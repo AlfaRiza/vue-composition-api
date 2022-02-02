@@ -1,12 +1,14 @@
 <template>
   <div>
-    <button @click="decrement">-</button>
-    {{ number }}
+    <!-- <button @click="decrement">-</button>
+    {{ number }} -->
     <!-- <p>{{ user.username }}</p>
     <p>{{ post.title }}</p>
     <p>{{ loading }}</p> -->
 
-    <button @click="increment">+</button>
+    <!-- <button @click="increment">+</button> -->
+
+    <Posts/>
   </div>
 </template>
 
@@ -58,17 +60,25 @@
 // }
 
 // work with method using reusable function
-import {ref} from 'vue'
-import useCounter from './helpers/counter.js'
+// import {ref} from 'vue'
+// import useCounter from './helpers/counter.js'
+// export default {
+//   setup() {
+//     const number = ref(0);
+
+//     const {increment, decrement} = useCounter(number);
+
+//     return {
+//       number, increment, decrement
+//     }
+//   }
+// }
+
+// Lifecycle
+import Posts from './components/Posts'
 export default {
-  setup() {
-    const number = ref(0);
-
-    const {increment, decrement} = useCounter(number);
-
-    return {
-      number, increment, decrement
-    }
+  components: {
+    Posts,
   }
 }
 </script>
