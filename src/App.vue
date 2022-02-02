@@ -1,9 +1,12 @@
 <template>
   <div>
-    <!-- {{ number }} -->
-    <p>{{ user.username }}</p>
+    <button @click="decrement">-</button>
+    {{ number }}
+    <!-- <p>{{ user.username }}</p>
     <p>{{ post.title }}</p>
-    <p>{{ loading }}</p>
+    <p>{{ loading }}</p> -->
+
+    <button @click="increment">+</button>
   </div>
 </template>
 
@@ -23,31 +26,48 @@
 //     }
 //   }
 // }
-import {reactive, toRefs} from 'vue'
+
+// Reactive, toRefs
+// import {reactive, toRefs} from 'vue'
+// export default {
+//   setup() {
+//     // const loading = ref(false)
+//     const state = reactive({
+//       loading: false,
+//       user: {
+//         name: "Alfa",
+//         username: "masmasakhirzaman"
+//       },
+//       post: {
+//         title: "Title",
+//         body: "Body"
+//       }
+//     });
+
+//     setTimeout(() => {
+//       state.loading = true
+//       // loading.value = true
+//       state.user.username = "AlfaRiza"
+//       state.post.title = "Title[update]"
+//     }, 5000)
+
+//     return {
+//       ...toRefs(state)
+//     }
+//   }
+// }
+
+// work with method using reusable function
+import {ref} from 'vue'
+import useCounter from './helpers/counter.js'
 export default {
   setup() {
-    // const loading = ref(false)
-    const state = reactive({
-      loading: false,
-      user: {
-        name: "Alfa",
-        username: "masmasakhirzaman"
-      },
-      post: {
-        title: "Title",
-        body: "Body"
-      }
-    });
+    const number = ref(0);
 
-    setTimeout(() => {
-      state.loading = true
-      // loading.value = true
-      state.user.username = "AlfaRiza"
-      state.post.title = "Title[update]"
-    }, 5000)
+    const {increment, decrement} = useCounter(number);
 
     return {
-      ...toRefs(state)
+      number, increment, decrement
     }
   }
 }
